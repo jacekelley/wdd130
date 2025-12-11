@@ -1,0 +1,37 @@
+vh is the height of the current screen 100vh is full screen
+
+      background: url("images/christus.webp") center/cover;
+      center cover puts image in center of border, and 
+
+justify content center goes with display flex
+
+align items up and down
+
+justify content right and left
+
+wrapper is for the big card thing in the middle oh yeah why is it autosuggesting code when this is just text bro
+
+
+shorthand for grid template:
+
+grid: rows/columns
+
+hr to add line beneath items
+
+border: size style color
+            SOLID
+
+z-index: higher the number, the more to the front it is
+
+text-shadow: 3px 3px 5px black;
+
+#007700
+
+flex direction is how content is laid out
+
+margin is outside class
+padding is insdie class
+
+
+body :hover       everything in body
+body:hover        body as a whole

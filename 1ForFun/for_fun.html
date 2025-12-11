@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Fun</title>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Orbitron", sans-serif;
+        }
+
+        body {
+            width: 98vw;
+            height: 97vh;
+            background-color: darkgreen;
+            cursor: cell;
+        }
+
+        a {
+            cursor: wait;
+        }
+
+        #stuff a {
+            position: absolute;
+            transition: 2s;
+            left: -9999px;
+            padding: 15px;
+            text-decoration: none;
+            width: 10000px;
+            background: url(../images/ai\ colors.jpeg);
+            color: white;
+            border-radius: 35%;
+        }
+
+        #stuff a:hover {
+            left: 1px;
+        }
+
+        #heh {
+            color: lightgoldenrodyellow;
+            border: 5px solid black;
+        }
+
+        #boring p {
+            margin-top: 100px;
+            position: absolute;
+            transition: .3s;
+            padding: 5px 50px;
+            width: 100px;
+            left: -100px;
+            background: lightgreen;
+            color: black;
+            border: 2px solid black;
+        }
+
+        #boring p:hover {
+            left: 1px;
+        }
+
+        #wrapper {
+            display: flex;
+            margin: auto;
+            flex-direction: column;
+            background: #007700;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            width: 300px;
+        }
+
+        img:hover {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(1deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div id="stuff">
+            <a href="#" id="heh">heheheh</a>
+        </div>
+        <div id="boring">
+            <p id="boring">Hi</p>
+        </div>
+    </section>
+
+    <div id="wrapper">
+        <p>Hover over the image:</p>
+        <a href="../Portal Page/index.html">
+            <img src="../images/Rubiks Cube Kelley.png" width="100px" alt="Cubix Rube">
+        </a>
+        <br><br>
+
+        <label for="favcolor">Select your favorite color: </label>
+        <br>
+        <input type="color" id="favcolor" value="#ff0000">
+    </div>
+</body>
+
+</html>

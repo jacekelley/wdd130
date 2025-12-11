@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" type="image/x-icon" href="photos/Rubiks_Cube_logo.png">
+
+
+    <style>
+        hr {
+            height: auto;
+            width: 100%;
+            border: 1px dashed darkgreen;
+        }
+
+        #family {
+            display: flex;
+            color: black;
+            height: 1000px;
+        }
+
+        #family img {
+            margin: 10px;
+            border-radius: 7%;
+            border: 5px solid darkgreen;
+            height: 400px;
+            position: sticky;
+            top: 10px;
+        }
+
+        #me p {
+            font-size: 20px;
+            margin: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            text-indent: 2em;
+        }
+
+        #favorites {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            background-color: lightskyblue;
+            border: 5px solid green;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .fav-item {
+            background-color: white;
+            border: 3px solid darkgreen;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .fav-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .fav-item h3 {
+            color: darkgreen;
+            margin-bottom: 5px;
+        }
+
+        .fav-item p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header class="image_overlay">
+            <img src="photos/Rubiks_Cube_logo.png" alt="logo">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="../wwr/wwr.html">WWR</a>
+                <a href="ice_challenges.html">ICE</a>
+                <a href="https://jacekelley.github.io/wdd130-Cole/" target="_blank" >Project</a>
+            </nav>
+        </header>
+
+        <div id="family">
+            <img src="photos/family.png" alt="My family">
+            <div id="me">
+                <p>
+                    I was born here in Rexburg, Idaho, and I have lived here my entire life. I am the youngest in my
+                    family, and growing up, I have always felt close to them. I have two older brothers, who are twins,
+                    and a sister. My sister and I fought all the time, but she has always been there for me and has
+                    always been my best friend. Being the youngest can be difficult — watching all my older siblings
+                    grow up, get married, and move out sometimes made me feel alone. But I know that because of the
+                    strong relationship we share, we will always have each other and always come back home. And besides,
+                    one day I'll grow up, get married, and move out myself.
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My two oldest brothers are both married. Cade, the
+                    oldest, just had his second child — a daughter (this picture is a little outdated; she's not in it),
+                    and they all live here in Rexburg. Levi, my second oldest brother, has three children: a daughter
+                    and two sons, and they're expecting another son any day now. Levi and his family live in Kansas,
+                    where Levi is going to KU. Finally, my sister Corinne was married a few years ago, and live here in
+                    Rexburg.
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Right now my major is Computer Science. Classes like
+                    Web Development have really showed me how much I like to work on computers. This is my 7th semester,
+                    but it's also my first time moving out of the house. It's been tough, but I'm excited to see what
+                    this experience will bring me.
+                </p>
+            </div>
+        </div>
+        <hr>
+
+        <h1>My Favorites</h1>
+        <section id="favorites">
+            <div class="fav-item">
+                <h3>Favorite Color</h3>
+                <p>Forest Green</p>
+            </div>
+
+            <div class="fav-item">
+                <h3>Favorite Food</h3>
+                <p>Zuppa Toscana</p>
+            </div>
+
+            <div class="fav-item">
+                <h3>Favorite Number</h3>
+                <p>7</p>
+            </div>
+
+            <div class="fav-item">
+                <h3>Favorite Movie</h3>
+                <p>Sorcerers Apprentice 2010</p>
+            </div>
+
+            <div class="fav-item">
+                <h3>Favorite Animal</h3>
+                <p>Japanese Macaque</p>
+            </div>
+
+            <div class="fav-item">
+                <h3>Favorite Book</h3>
+                <p>Michael Vey</p>
+            </div>
+
+            <div class="fav-item">
+                <h3>Favorite Season</h3>
+                <p>Winter</p>
+            </div>
+
+            <div class="fav-item">
+                <h3>Favorite Hobby</h3>
+                <p>Speedcubing</p>
+            </div>
+        </section>
+
+        <footer>
+            <a href="#">Home</a>
+            <a href="../wwr/wwr.html">WWR</a>
+            <a href="ice_challenges.html">ICE</a>
+            <a href="https://jacekelley.github.io/wdd130-Cole/" target="_blank" >Project</a>
+            <div>Copyright 2025 &copy;</div>
+
+        </footer>
+</body>
+
+</html>

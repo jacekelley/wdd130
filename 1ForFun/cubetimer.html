@@ -1,0 +1,215 @@
+<!-- ChatGPT did all of this, I just wanted to see if it could work, and how. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cube Timer</title>
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* prevent page scroll */
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: #fff;
+    user-select: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Table on the left, scrollable */
+#tableWrapper {
+    width: 400px;
+    height: 90vh; /* fill most of viewport height */
+    overflow-y: auto;
+    border: 1px solid #444;
+}
+#timesTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    text-align: center;
+}
+th { background-color: #444; }
+.delete-btn { color: #f55; cursor: pointer; font-weight: bold; }
+.delete-btn:hover { color: #fff; }
+
+/* Timer and info on the right */
+#timerWrapper {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+}
+#timer { font-size: 5rem; margin: 20px 0; transition: color 0.2s; }
+#timer.holding { color: red; }
+#average { font-size: 1.5rem; margin-bottom: 20px; color: #aaa; }
+#message { font-size: 1.5rem; color: #aaa; text-align: center; }
+#scramble { font-size: 1.7rem; margin: 10px 0 20px; text-align: center; }
+</style>
+</head>
+<body>
+
+<div id="tableWrapper">
+    <table id="timesTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Time (s)</th>
+                <th>Scramble</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<div id="timerWrapper">
+    <div id="scramble">Scramble: </div>
+    <div id="timer">0.000</div>
+    <div id="average">Average: 0.000</div>
+    <div id="message">Hold Space to get ready</div>
+</div>
+
+<script>
+let timerInterval = null;
+let startTime = null;
+let running = false;
+let ready = false;
+let currentScramble = '';
+let lastTime = '0.000';
+
+const timerDisplay = document.getElementById('timer');
+const message = document.getElementById('message');
+const scrambleDisplay = document.getElementById('scramble');
+const averageDisplay = document.getElementById('average');
+const timesTable = document.querySelector('#timesTable tbody');
+const tableWrapper = document.getElementById('tableWrapper');
+
+function generateScramble() {
+    const moves = ['U','D','L','R','F','B'];
+    const suffix = ['', `'`,`2`];
+    let scramble = [];
+    let lastMove = '';
+    for(let i=0;i<20;i++){
+        let move;
+        do { move = moves[Math.floor(Math.random()*moves.length)]; } 
+        while(move === lastMove);
+        lastMove = move;
+        scramble.push(move + suffix[Math.floor(Math.random()*suffix.length)]);
+    }
+    return scramble.join(' ');
+}
+
+function formatTime(ms) { return (ms/1000).toFixed(3); }
+
+function newScramble() {
+    currentScramble = generateScramble();
+    scrambleDisplay.textContent = 'Scramble: ' + currentScramble;
+    timerDisplay.textContent = lastTime;
+    message.textContent = 'Hold Space to get ready';
+}
+
+// Add solve to table
+function addSolveRow(time, scramble) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>0</td>
+        <td>${time}</td>
+        <td>${scramble}</td>
+        <td><span class="delete-btn">×</span></td>
+    `;
+    timesTable.appendChild(row);
+
+    // Delete button
+    row.querySelector('.delete-btn').addEventListener('click', () => {
+        row.remove();
+        updateAverage();
+        updateRowNumbers();
+    });
+
+    updateAverage();
+    updateRowNumbers();
+
+    // Scroll table to bottom
+    tableWrapper.scrollTop = tableWrapper.scrollHeight;
+}
+
+// Update row numbers
+function updateRowNumbers() {
+    const rows = timesTable.querySelectorAll('tr');
+    rows.forEach((row, index) => {
+        row.children[0].textContent = index + 1;
+    });
+}
+
+// Compute average
+function updateAverage() {
+    const rows = Array.from(timesTable.querySelectorAll('tr'));
+    if(rows.length === 0){
+        averageDisplay.textContent = 'Average: 0.000';
+        return;
+    }
+    const total = rows.reduce((sum,row) => sum + parseFloat(row.children[1].textContent), 0);
+    const avg = total / rows.length;
+    averageDisplay.textContent = 'Average: ' + avg.toFixed(3);
+}
+
+newScramble();
+
+// Hold Space → Get Ready
+document.addEventListener('keydown', (e) => {
+    if(e.code === 'Space' && !running && !ready){
+        ready = true;
+        message.textContent = 'Get Ready...';
+        timerDisplay.classList.add('holding');
+        e.preventDefault();
+    }
+});
+
+// Release Space → Start Timer
+document.addEventListener('keyup', (e) => {
+    if(e.code === 'Space' && ready && !running){
+        running = true;
+        ready = false;
+        startTime = Date.now();
+        message.textContent = 'Timing... Press any key or click to stop!';
+        timerDisplay.classList.remove('holding');
+        timerInterval = setInterval(() => {
+            const elapsed = Date.now() - startTime;
+            timerDisplay.textContent = formatTime(elapsed);
+        }, 10);
+        e.preventDefault();
+    }
+});
+
+// Stop Timer
+function stopTimer() {
+    if(running){
+        clearInterval(timerInterval);
+        timerInterval = null;
+        running = false;
+        const elapsed = Date.now() - startTime;
+        lastTime = formatTime(elapsed);
+        addSolveRow(lastTime, currentScramble);
+        newScramble();
+    }
+}
+
+document.addEventListener('keydown', (e) => { if(running) stopTimer(); });
+document.addEventListener('click', (e) => { if(running) stopTimer(); });
+</script>
+
+</body>
+</html>

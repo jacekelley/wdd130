@@ -1,0 +1,102 @@
+ body {
+     background: #000000;
+     margin: 0;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     color: #000;
+ }
+
+ a {
+     text-decoration: none;
+     color: #000;
+     margin: 0 15px;
+ }
+
+ nav a:hover {
+    transition: .3s;
+    color: darkblue;
+    transform: rotate(360deg) scale(1.4);
+ }
+ 
+ #wrapper {
+     max-width: 900px;
+     margin: 20px auto;
+     background: lightgreen;
+     padding: 20px;
+     box-sizing: border-box;
+     min-height: 1000px;
+ }
+
+ header {
+     text-align: center;
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     background: url("../images/underwater.jpg");
+     border: #000;
+     border-radius: 50px;
+
+ }
+
+ header img {
+     width: 75px;
+     margin: 0 auto 20px;
+
+
+ }
+
+ header h1 {
+     margin: 0 0 20px;
+ }
+
+ nav {
+     display: flex;
+     justify-content: center;
+     margin-bottom: 20px;
+     background-color: green;
+     height: 40px;
+     border-bottom-left-radius: 50px;
+     border-bottom-right-radius: 50px;
+     align-items: center;
+
+ }
+
+ #welcome {
+     text-align: center;
+     font-size: 40px;
+     text-shadow: 2px 2px 10px black;
+ }
+
+ nav a {
+     font-weight: bold;
+ }
+
+ main {
+     gap: 20px;
+     padding: 15px;
+     border-radius: 8px;
+ }
+
+ main section {
+     text-decoration: underline;
+     padding: 5px;
+
+ }
+
+ .cube_img {
+     width: 300px;
+     border: 5px ridge black;
+     border-radius: 100%;
+
+ }
+
+
+
+ .content-wrapper {
+     text-align: center;
+ }
+
+ footer {
+     text-align: center;
+     margin-top: 20px;
+     padding-top: 10px;
+     border-top: 3px dashed darkgreen;
+ }
+

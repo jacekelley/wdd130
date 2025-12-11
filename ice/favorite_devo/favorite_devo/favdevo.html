@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Favorite Devotionals</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-image">
+        <h1>My Favorite<br>Devotionals</h1>
+      </div>
+    </header>
+
+    <main>
+      <div class="content-box">
+        <h2>Favorite BYU–Idaho Devotionals</h2>
+
+        <!-- TABLE SECTION -->
+        <table class="darkTable">
+          <thead>
+            <tr>
+              <th>Speaker</th>
+              <th>Title</th>
+              <th>Location</th>
+              <th>Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Casey Puzey</td>
+              <td>Trust the Refiner</td>
+              <td>BYU–Idaho Center</td>
+              <td>2025</td>
+            </tr>
+            <tr>
+              <td>Jim Lawrence</td>
+              <td>Choose Love</td>
+              <td>BYU–Idaho Center</td>
+              <td>2025</td>
+            </tr>
+            <tr>
+              <td>Diantha Hopkins</td>
+              <td>The Ten-Minute Miracle</td>
+              <td>BYU–Idaho Center</td>
+              <td>2025</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- FORM SECTION -->
+        <h2>Add a Devotional</h2>
+        <form class="devotional-form">
+          <label for="speaker">Speaker:</label>
+          <input type="text" id="speaker" name="speaker" placeholder="Enter speaker name" required>
+
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" placeholder="Enter devotional title" required>
+
+          <label for="location">Location:</label>
+          <input type="text" id="location" name="location" placeholder="Enter location" required>
+
+          <label for="year">Year:</label>
+          <input type="number" id="year" name="year" placeholder="Enter year" required>
+
+          <button type="submit">Add Devotional</button>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: gray;
+        }
+
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            letter-spacing: 0.05rem;
+            text-transform: uppercase;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);       
+        }
+
+        header h1 {
+            margin: 0;
+            font-weight: 400;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: .1fr .1fr 1fr .1fr;
+            margin-top: 20px;
+        }
+
+        hr {
+            width: 100%;
+            grid-column: 1 / 5;
+        }
+
+        h2 {
+            grid-column: 2/3;
+        }
+
+        #cblue {
+            background: blue;
+            grid-column: 1 / 2;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+        }
+
+        #cwhite {
+            background: white;
+            grid-column: 2 / 4;
+        }
+
+        #cred {
+            background: red;
+            grid-column: 1 / 4;
+        }
+
+        #chile {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            height: 200px;
+            width: 300px;
+        }
+
+        .star {
+            width: 70px;
+            aspect-ratio: 1;
+            background: white;
+            clip-path: polygon(50% 0, 79% 90%, 2% 35%, 98% 35%, 21% 90%);
+        }
+
+        #denmark {
+            display: grid;
+            grid-template-columns: 2fr 1fr 4fr;
+            grid-template-rows: 3fr 1fr 3fr;
+            height: 200px;
+            width: 300px;
+            background-color: red;
+        }
+
+        #dred1 {
+            background: white;
+            grid-column: 1/4;
+            grid-row: 2;
+        }
+
+        #dred2 {
+            background: white;
+            grid-column: 2;
+            grid-row: 1/4;
+        }
+
+        #finland {
+            display: grid;
+            height: 200px;
+            width: 300px;
+            background: white;
+            grid-template-columns: 2fr 1fr 3fr;
+            grid-template-rows: 2fr 1fr 2fr;
+        }
+
+        #fwhite1 {
+            background: blue;
+            grid-column: 2;
+            grid-row: 1/4;
+        }
+
+        #fwhite2 {
+            background: blue;
+            grid-column: 1/4;
+            grid-row: 2;
+        }
+
+        #benin {
+            display: grid;
+            height: 200px;
+            width: 300px;
+            background: green;
+            grid-template-columns: 4fr 5fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        #byellow {
+            background: yellow;
+            grid-column: 2;
+            grid-row: 1/2;
+        }
+
+        #bred {
+            background: red;
+            grid-column: 2;
+            grid-row: 2/3;
+        }
+
+        #america {
+            display: grid;
+            width: 300px;
+            height: 200px;
+            grid-template-columns: 2fr 3fr;
+            grid-template-rows: repeat(13, 1fr);
+        }
+
+        .stripe {
+            grid-column: 1 / 3;
+        }
+
+        .red {
+            background: red;
+        }
+
+        .white {
+            background: white;
+        }
+
+
+        #ablue {
+            background: blue;
+            grid-column: 1;
+            grid-row: 1 / 8;
+            z-index: 2;
+
+        }
+
+        #estonia {
+            display: grid;
+            background-color: black;
+            height: 200px;
+            width: 300px;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+
+        #eblue {
+            background: blue;
+            grid-row: 1;
+        }
+
+        #ewhite {
+            background: white;
+            grid-row: 3;
+        }
+
+        #gambia {
+            display: grid;
+            background: white;
+            height: 200px;
+            width: 300px;
+            grid: 5fr 1fr 5fr 1fr 5fr/1fr
+        }
+
+        #gred {
+            background: red;
+            grid-row: 1;
+        }
+
+        #gblue {
+            background: blue;
+            grid-row: 3;
+        }
+
+        #ggreen {
+            background: green;
+            grid-row: 5;
+        }
+
+        #japan {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            height: 200px;
+            width: 300px;
+        }
+
+        #jred {
+            background-color: red;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Using CSS Grid to make Country Flags</h1>
+    </header>
+    <main>
+        <h2>Chile</h2>
+        <div id="chile">
+            <div id="cblue">
+                <div class="star"></div>
+            </div>
+            <div id="cwhite"></div>
+            <div id="cred"></div>
+        </div>
+        <hr>
+
+        <h2>Denmark</h2>
+        <div id="denmark">
+            <div id="dred1"></div>
+            <div id="dred2"></div>
+            <div id="dred3"></div>
+            <div id="dred4"></div>
+        </div>
+        <hr>
+
+        <h2>Finland</h2>
+        <div id="finland">
+            <div id="fwhite1"></div>
+            <div id="fwhite2"></div>
+            <div id="fwhite3"></div>
+            <div id="fwhite4"></div>
+        </div>
+        <hr>
+
+        <h2>Benin</h2>
+        <div id="benin">
+            <div id="bgreen"></div>
+            <div id="byellow"></div>
+            <div id="bred"></div>
+        </div>
+        <hr>
+
+        <h2>Attempt at America</h2>
+        <div id="america">
+            <div class="stripe red"></div>
+            <div class="stripe white"></div>
+            <div class="stripe red"></div>
+            <div class="stripe white"></div>
+            <div class="stripe red"></div>
+            <div class="stripe white"></div>
+            <div class="stripe red"></div>
+            <div class="stripe white"></div>
+            <div class="stripe red"></div>
+            <div class="stripe white"></div>
+            <div class="stripe red"></div>
+            <div class="stripe white"></div>
+            <div class="stripe red"></div>
+            <div id="ablue"></div>
+        </div>
+        <hr>
+
+        <h2>Estonia</h2>
+        <div id="estonia">
+            <div id="eblue"></div>
+            <div id="ewhite"></div>
+        </div>
+        <hr>
+
+        <h2>Gambia</h2>
+        <div id="gambia">
+            <div id="gred"></div>
+            <div id="gblue"></div>
+            <div id="ggreen"></div>
+        </div>
+        <hr>
+
+        <h2>Japan</h2>
+        <div id="japan">
+            <div id="jred"></div>
+        </div>
+        <hr>
+    </main>
+</body>
+
+</html>

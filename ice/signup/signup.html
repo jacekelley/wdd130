@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Feed Sign Up</title>
+
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background: rgb(120, 96, 64);
+        }
+
+        #formContainer {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+            height: 90vh;
+            width: 30vw;
+            background: white;
+            border: 10px solid darkblue;
+            border-radius: 5%;
+            overflow: hidden;
+        }
+
+        #closeBtn {
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: flex-end;
+            padding-top: 80px;
+            padding-bottom: 25px;
+            text-align: center;
+            background: url("images/jesus_feeds_5000.jpeg") center 10% / cover;
+            width: 30vw;
+            color: white;
+            text-shadow: 3px 3px 5px black;
+        }
+
+        .hero h2 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        .hero h3 {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        h4 {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        #myForm {
+            display: grid;
+            width: 400px;
+            padding: 20px;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+
+        #buttons {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        #pictures {
+            padding-top: 50px;
+            display: grid;
+            gap: 3px;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            width: 30vw;
+        }
+
+        #pictures img {
+            height: auto;
+            width: 90px;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <div id="formContainer">
+        <button type="button" id="closeBtn">X</button>
+        <div class="hero">
+            <h2>Daily Feed</h2>
+            <h3>Scripture a Day </h3>
+        </div>
+
+        <h4>Sign Up for Daily Scripture Feed</h4>
+        <form id="myForm">
+            <label for="username">User Name:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label>Gender:</label>
+            <div>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Female</label>
+            </div>
+        </form>
+
+        <div id="buttons">
+            <section>
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <label for="newsletter">Subscribe to newsletter</label>
+            </section>
+
+            <section>
+                <input type="checkbox" id="conditions" name="conditions" required>
+                <label for="conditions">I acknowledge the terms and conditions</label>
+            </section>
+
+            <button type="submit">Submit</button>
+        </div>
+
+        <div id="pictures">
+            <img src="images/old_testament.webp" alt="Old Testament">
+            <img src="images/new_testament.webp" alt="New Testament">
+            <img src="images/book_of_mormon.webp" alt="Book of Mormon">
+            <img src="images/doctrine_and_covenants.webp" alt="D&C">
+            <img src="images/pearl_of_great_price.webp" alt="Pearl of Great Price">
+        </div>
+    </div>
+
+    <div id="output"></div>
+
+    <script>
+        // Close button
+        document.getElementById("closeBtn").addEventListener("click", function () {
+            document.getElementById("formContainer").style.display = "none";
+        });
+
+        const form = document.getElementById('myForm');
+        const output = document.getElementById('output');
+        const submitBtn = document.querySelector('#buttons button[type="submit"]');
+
+        // Listen for the form submission
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Stop form from actually submitting
+
+            const formData = new FormData(form);
+            const entries = [];
+
+            for (const [key, value] of formData.entries()) {
+                if (key == "password") {
+                    entries.push(`<strong>${key}</strong>: ${value} (you should probably encrypt the password)`);
+                } else {
+                    entries.push(`<strong>${key}</strong>: ${value}`);
+                }
+            }
+
+            output.innerHTML = `
+        <br>  
+        <h3>Here is the data that would be sent to the server:</h3>
+        <ul>
+            ${entries.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+        `;
+        });
+
+        // Manually trigger form submit when button outside the form is clicked
+        submitBtn.addEventListener('click', function () {
+            form.requestSubmit(); // this triggers the 'submit' event on the form
+        });
+    </script>
+
+</body>
+
+</html>
